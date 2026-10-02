@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambica Ladies Tailor | Custom Blouses, Dresses, Kurtis & Gowns</title>
+  <meta name="description" content="Ambica Ladies Tailor – bespoke Indian tailoring by an experienced master craftsman. Custom-stitched blouses, designer anarkalis, kurtis and bridal gowns tailored to your unique measurements. No two pieces are ever the same.">
+  <meta name="keywords" content="ladies tailor, blouse stitching, designer blouse, bridal blouse, anarkali stitching, kurti tailor, custom gown, boutique tailor, Indian ethnic wear tailoring, Ambica tailor">
+  <meta name="author" content="Ambica Ladies Tailor">
+  <meta name="theme-color" content="#D81B60">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" content="Ambica Ladies Tailor | Colours Stitched to Fit You">
+  <meta property="og:description" content="Custom-stitched unique blouses, festive dresses, kurtis & bridal gowns made by one experienced master tailor. Perfect body fit guarantee.">
+  <meta property="og:image" content="images/og-banner.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://ambica-tailor.netlify.app/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ambica Ladies Tailor | Colours Stitched to Fit You">
+  <meta name="twitter:description" content="Bespoke women's ethnic tailoring by a dedicated master craftsman. Share your idea on WhatsApp for a custom outfit.">
+  <meta name="twitter:image" content="images/og-banner.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- LocalBusiness Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Ambica Ladies Tailor",
+    "image": "images/og-banner.svg",
+    "telephone": "+919820921522",
+    "priceRange": "₹400 - ₹5000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Shop No. 4, Ambica Creation, Near Station Road, Central Market",
+      "addressLocality": "Central Market",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "10:00",
+        "closes": "20:00"
+      }
+    ],
+    "sameAs": [
+      "https://wa.me/919820921522"
+    ],
+    "description": "Bespoke custom-stitched unique blouses, festive dresses, kurtis and bridal gowns for women, tailored by one master craftsman with over 25 years of experience."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <a href="#hero" class="brand-link" aria-label="Ambica Ladies Tailor Home">
+        <img src="images/favicon.svg" alt="Ambica Ladies Tailor Logo" class="brand-icon">
+        <div class="brand-text">
+          <span class="brand-name" data-i18n="shopName">Ambica Ladies Tailor</span>
+          <span class="brand-tagline" data-i18n="tagline">Colours stitched to fit you</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#designs" class="nav-link" data-i18n="navDesigns">Designs</a>
+        <a href="#prices" class="nav-link" data-i18n="navPrices">Prices</a>
+        <a href="#guide" class="nav-link" data-i18n="navGuide">Measurement Guide</a>
+        <a href="#how-it-works" class="nav-link" data-i18n="navHowItWorks">How It Works</a>
+        <a href="#order" class="nav-link" data-i18n="navOrder">Order Now</a>
+        <a href="#fitting" class="nav-link" data-i18n="navFitting">Book a Fitting</a>
+        <a href="#contact" class="nav-link" data-i18n="navContact">Contact</a>
+      </nav>
+
+      <!-- Action Buttons (Language, Dark Mode, Mobile Hamburger) -->
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <button type="button" class="btn-lang-toggle" id="langToggleBtn" aria-label="Switch language to Gujarati" data-i18n-aria="langToggleAria">
+          <span class="lang-flag">🇮🇳</span> <span>ગુજરાતી</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button type="button" class="btn-icon-toggle" id="themeToggleBtn" aria-label="Toggle light or dark theme" data-i18n-aria="themeToggleAria">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button type="button" class="btn-hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false" data-i18n-aria="menuOpenAria">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <a href="#designs" class="mobile-nav-link"><span data-i18n="navDesigns">Designs</span> <span>→</span></a>
+    <a href="#prices" class="mobile-nav-link"><span data-i18n="navPrices">Prices</span> <span>→</span></a>
+    <a href="#guide" class="mobile-nav-link"><span data-i18n="navGuide">Measurement Guide</span> <span>→</span></a>
+    <a href="#how-it-works" class="mobile-nav-link"><span data-i18n="navHowItWorks">How It Works</span> <span>→</span></a>
+    <a href="#order" class="mobile-nav-link"><span data-i18n="navOrder">Order Now</span> <span>→</span></a>
+    <a href="#fitting" class="mobile-nav-link"><span data-i18n="navFitting">Book a Fitting</span> <span>→</span></a>
+    <a href="#reviews" class="mobile-nav-link"><span data-i18n="navReviews">Reviews</span> <span>→</span></a>
+    <a href="#faq" class="mobile-nav-link"><span data-i18n="navFaq">FAQ</span> <span>→</span></a>
+    <a href="#contact" class="mobile-nav-link"><span data-i18n="navContact">Contact</span> <span>→</span></a>
+  </div>
+
+  <main>
+    <!-- Thin Rainbow Thread Top -->
+    <div class="rainbow-thread" aria-hidden="true"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-fabric-pattern" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <div class="hero-badge-pill">
+          <span>✨</span> <span data-i18n="heroBadge">One Master Craftsman • 25+ Years Experience • Perfect Fit Guarantee</span>
+        </div>
+
+        <h1 class="hero-title" data-i18n="heroTitle">Colours stitched to fit you.</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">
+          Handcrafted, bespoke blouses, festive anarkalis, daily kurtis and bridal gowns. Cut and stitched with love by one dedicated master tailor — where no two creations are ever the same.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#order" class="btn btn-primary-gold" data-i18n="heroBtnOrder">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+            Order on WhatsApp
+          </a>
+          <a href="#designs" class="btn btn-outline-white" data-i18n="heroBtnDesigns">
+            Explore Designs ↓
+          </a>
+        </div>
+
+        <!-- 3 Core Highlight Features -->
+        <div class="hero-features-grid">
+          <div class="hero-feature-card">
+            <div class="hero-feature-icon">🪡</div>
+            <div class="hero-feature-title" data-i18n="heroFeature1">Single Master Tailor</div>
+            <div class="hero-feature-sub" data-i18n="heroFeature1Sub">Personal care for every stitch</div>
+          </div>
+          <div class="hero-feature-card">
+            <div class="hero-feature-icon">📐</div>
+            <div class="hero-feature-title" data-i18n="heroFeature2">Custom To Your Size</div>
+            <div class="hero-feature-sub" data-i18n="heroFeature2Sub">Flattering cuts with inside margins</div>
+          </div>
+          <div class="hero-feature-card">
+            <div class="hero-feature-icon">📸</div>
+            <div class="hero-feature-title" data-i18n="heroFeature3">Photo To Reality</div>
+            <div class="hero-feature-sub" data-i18n="heroFeature3Sub">Bring any Instagram/Pinterest photo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thin Rainbow Thread Bottom -->
+    <div class="rainbow-thread" aria-hidden="true"></div>
+
+    <!-- Section 1: Designs Gallery -->
+    <section class="section" id="designs">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navDesigns">Designs</span>
+          <h2 class="section-title" data-i18n="galleryTitle">Our Bespoke Creations</h2>
+          <p class="section-subtitle" data-i18n="gallerySubtitle">
+            Every garment tells a unique story of fabric, fit, and timeless Indian craftsmanship.
+          </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="gallery-filters" role="group" aria-label="Design Category Filters">
+          <button type="button" class="filter-btn active" data-category="all" data-i18n="filterAll">All Designs</button>
+          <button type="button" class="filter-btn" data-category="blouses" data-i18n="filterBlouses">Blouses</button>
+          <button type="button" class="filter-btn" data-category="dresses" data-i18n="filterDresses">Dresses & Anarkalis</button>
+          <button type="button" class="filter-btn" data-category="kurtis" data-i18n="filterKurtis">Kurtis</button>
+          <button type="button" class="filter-btn" data-category="gowns" data-i18n="filterGowns">Gowns</button>
+        </div>
+
+        <!-- Designs Grid Container -->
+        <div class="designs-grid" id="galleryGrid" aria-live="polite">
+          <!-- Dynamically populated from js/data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Prices -->
+    <section class="section" id="prices" style="background-color: var(--bg-surface-elevated);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navPrices">Pricing</span>
+          <h2 class="section-title" data-i18n="pricesTitle">Transparent Starting Prices</h2>
+          <p class="section-subtitle" data-i18n="pricesSubtitle">
+            Honest craftsmanship at reasonable rates. Final prices depend on fabric intricacy, neck patterns, and hand embroidery work.
+          </p>
+        </div>
+
+        <!-- Prices Table -->
+        <div class="prices-table-wrap">
+          <table class="prices-table" aria-label="Tailoring starting prices">
+            <thead>
+              <tr>
+                <th scope="col" data-i18n="tableHeadItem">Garment Type</th>
+                <th scope="col" data-i18n="tableHeadPrice">Starting From</th>
+                <th scope="col" data-i18n="tableHeadDetails">Includes / Highlights</th>
+                <th scope="col" data-i18n="tableHeadAction">Action</th>
+              </tr>
+            </thead>
+            <tbody id="pricesTableBody">
+              <!-- Dynamically populated from js/data.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Note Callout Box -->
+        <div class="price-note-box">
+          <div class="price-note-heading" data-i18n="priceNoteHeading">Please Note:</div>
+          <p class="price-note-text" data-i18n="priceNoteText">
+            The prices listed above are starting rates for plain stitching with standard lining. Heavy hand embroidery, maggam work, original mirror work, can-can insertion, and specialized designer latkans will be estimated transparently after checking your fabric.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Measurement Guide -->
+    <section class="section" id="guide">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navGuide">Guide</span>
+          <h2 class="section-title" data-i18n="guideTitle">Measurement Guide</h2>
+          <p class="section-subtitle" data-i18n="guideSubtitle">
+            Need it stitched from home? Follow our simple illustrated guide below and send your exact measurements directly to our WhatsApp.
+          </p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="guide-tabs" role="tablist">
+          <button type="button" class="guide-tab-btn active" role="tab" aria-selected="true" data-tab="tabBlouseContent" data-i18n="tabBlouse">
+            Blouse Measurements
+          </button>
+          <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-tab="tabDressContent" data-i18n="tabDress">
+            Dress / Kurti / Gown Measurements
+          </button>
+        </div>
+
+        <!-- Tab 1: Blouse Guide -->
+        <div class="guide-tab-content active" id="tabBlouseContent" role="tabpanel">
+          <div class="guide-layout">
+            <div class="guide-diagram-card">
+              <img src="images/placeholders/guide-blouse.svg" alt="Blouse measurement visual points guide" class="guide-diagram-img" loading="lazy">
+            </div>
+
+            <div class="guide-form-card">
+              <h3 class="guide-form-title" data-i18n="tabBlouse">Blouse Measurements</h3>
+              <p class="guide-form-desc" data-i18n="guideNote">
+                Tip: Use a flexible measuring tape. Keep the tape comfortably snug without pulling too tight.
+              </p>
+
+              <div class="measure-inputs-grid">
+                <div class="measure-field">
+                  <label for="mb_name" class="measure-label" data-i18n="formName">Your Name</label>
+                  <div class="measure-input-group">
+                    <input type="text" id="mb_name" class="measure-input" placeholder="Anjali Shah" data-i18n-placeholder="customerNamePlaceholder">
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_unit" class="measure-label">Unit</label>
+                  <div class="measure-input-group">
+                    <select id="mb_unit" class="measure-input" style="cursor: pointer;">
+                      <option value="inches" selected>Inches (ઇંચ)</option>
+                      <option value="cm">Centimeters (સેમી)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_bust" class="measure-label" data-i18n="mBust">Bust / Chest</label>
+                  <span class="measure-hint" data-i18n="mBustHint">Measure around fullest part</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="mb_bust" class="measure-input" placeholder="e.g. 36">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_waist" class="measure-label" data-i18n="mWaist">Natural Waist</label>
+                  <span class="measure-hint" data-i18n="mWaistHint">Underbust where band sits</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="mb_waist" class="measure-input" placeholder="e.g. 30">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_length" class="measure-label" data-i18n="mLength">Full Length</label>
+                  <span class="measure-hint" data-i18n="mLengthHint">Shoulder to bottom edge</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="mb_length" class="measure-input" placeholder="e.g. 14.5">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_shoulder" class="measure-label" data-i18n="mShoulder">Shoulder Width</label>
+                  <span class="measure-hint" data-i18n="mShoulderHint">Across back tip to tip</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="mb_shoulder" class="measure-input" placeholder="e.g. 14">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_sleeve" class="measure-label" data-i18n="mSleeve">Sleeve Length</label>
+                  <span class="measure-hint" data-i18n="mSleeveHint">Desired sleeve length</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="mb_sleeve" class="measure-input" placeholder="e.g. 10.5">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_armhole" class="measure-label" data-i18n="mArmhole">Armhole</label>
+                  <span class="measure-hint" data-i18n="mArmholeHint">Around arm socket</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="mb_armhole" class="measure-input" placeholder="e.g. 16">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_front_neck" class="measure-label" data-i18n="mFrontNeck">Front Neck Depth</label>
+                  <span class="measure-hint" data-i18n="mFrontNeckHint">Diagonal shoulder dip</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="mb_front_neck" class="measure-input" placeholder="e.g. 6.5">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="mb_back_neck" class="measure-label" data-i18n="mBackNeck">Back Neck Depth</label>
+                  <span class="measure-hint" data-i18n="mBackNeckHint">Desired back cut dip</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="mb_back_neck" class="measure-input" placeholder="e.g. 9">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-whatsapp-solid" id="sendBlouseMeasureBtn" data-i18n="btnSendMeasurements">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                Send My Measurements on WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Dress / Kurti / Gown Guide -->
+        <div class="guide-tab-content" id="tabDressContent" role="tabpanel">
+          <div class="guide-layout">
+            <div class="guide-diagram-card">
+              <img src="images/placeholders/guide-dress.svg" alt="Dress and Kurti measurement visual guide" class="guide-diagram-img" loading="lazy">
+            </div>
+
+            <div class="guide-form-card">
+              <h3 class="guide-form-title" data-i18n="tabDress">Dress / Kurti / Gown Measurements</h3>
+              <p class="guide-form-desc" data-i18n="guideNote">
+                Tip: Stand straight in a natural posture while taking full garment length measurements.
+              </p>
+
+              <div class="measure-inputs-grid">
+                <div class="measure-field">
+                  <label for="md_name" class="measure-label" data-i18n="formName">Your Name</label>
+                  <div class="measure-input-group">
+                    <input type="text" id="md_name" class="measure-input" placeholder="Pooja Patel" data-i18n-placeholder="customerNamePlaceholder">
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_garment" class="measure-label" data-i18n="formItemType">Garment</label>
+                  <div class="measure-input-group">
+                    <select id="md_garment" class="measure-input">
+                      <option value="Kurti">Kurti</option>
+                      <option value="Dress / Anarkali" selected>Dress / Anarkali</option>
+                      <option value="Evening Gown">Evening Gown</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_unit" class="measure-label">Unit</label>
+                  <div class="measure-input-group">
+                    <select id="md_unit" class="measure-input">
+                      <option value="inches" selected>Inches (ઇંચ)</option>
+                      <option value="cm">Centimeters (સેમી)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_bust" class="measure-label" data-i18n="mBust">Bust</label>
+                  <span class="measure-hint" data-i18n="mBustHint">Chest circumference</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="md_bust" class="measure-input" placeholder="e.g. 38">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_waist" class="measure-label" data-i18n="mWaist">Natural Waist</label>
+                  <span class="measure-hint" data-i18n="mWaistHint">Above navel narrowest</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="md_waist" class="measure-input" placeholder="e.g. 32">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_hip" class="measure-label" data-i18n="mHip">Hip / Seat</label>
+                  <span class="measure-hint" data-i18n="mHipHint">Widest hip circumference</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="md_hip" class="measure-input" placeholder="e.g. 40">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_length" class="measure-label" data-i18n="mLength">Full Length</label>
+                  <span class="measure-hint" data-i18n="mLengthHint">Shoulder to desired hemline</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="md_length" class="measure-input" placeholder="e.g. 48">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_shoulder" class="measure-label" data-i18n="mShoulder">Shoulder</label>
+                  <span class="measure-hint" data-i18n="mShoulderHint">Tip to tip across back</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="md_shoulder" class="measure-input" placeholder="e.g. 14.5">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_sleeve" class="measure-label" data-i18n="mSleeve">Sleeve Length</label>
+                  <span class="measure-hint" data-i18n="mSleeveHint">Shoulder bone to hem</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="md_sleeve" class="measure-input" placeholder="e.g. 17">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+
+                <div class="measure-field">
+                  <label for="md_armhole" class="measure-label" data-i18n="mArmhole">Armhole</label>
+                  <span class="measure-hint" data-i18n="mArmholeHint">Arm socket circumference</span>
+                  <div class="measure-input-group">
+                    <input type="number" step="0.5" id="md_armhole" class="measure-input" placeholder="e.g. 17">
+                    <span class="measure-unit">in</span>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-whatsapp-solid" id="sendDressMeasureBtn" data-i18n="btnSendMeasurements">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                Send My Measurements on WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: How an Order Works (4 Steps) -->
+    <section class="section" id="how-it-works" style="background-color: var(--bg-surface-elevated);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navHowItWorks">Process</span>
+          <h2 class="section-title" data-i18n="stepsTitle">How an Order Works</h2>
+          <p class="section-subtitle" data-i18n="stepsSubtitle">
+            4 simple, hassle-free steps from your idea to your finished, perfectly fitted outfit.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-number-watermark" data-i18n="step1Num">01</span>
+            <div class="step-icon-wrap">💡</div>
+            <h3 class="step-title" data-i18n="step1Title">Share Your Idea</h3>
+            <p class="step-desc" data-i18n="step1Desc">
+              Send us a photo from Instagram or Pinterest, pick from our gallery, or describe what you have in mind.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number-watermark" data-i18n="step2Num">02</span>
+            <div class="step-icon-wrap">📏</div>
+            <h3 class="step-title" data-i18n="step2Title">Give Measurements</h3>
+            <p class="step-desc" data-i18n="step2Desc">
+              Visit our shop for exact tailoring measurements, send a well-fitted sample piece, or follow our easy guide.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number-watermark" data-i18n="step3Num">03</span>
+            <div class="step-icon-wrap">✂️</div>
+            <h3 class="step-title" data-i18n="step3Title">Stitch & Shape</h3>
+            <p class="step-desc" data-i18n="step3Desc">
+              Our master craftsman meticulously cuts, shapes, and stitches your garment with generous inside margins.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number-watermark" data-i18n="step4Num">04</span>
+            <div class="step-icon-wrap">👗</div>
+            <h3 class="step-title" data-i18n="step4Title">Trial & Pick Up</h3>
+            <p class="step-desc" data-i18n="step4Desc">
+              Try your outfit in our shop. We do any minor touch-ups on the spot so you leave with 100% confidence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Order Form -->
+    <section class="section" id="order">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navOrder">Order Online</span>
+          <h2 class="section-title" data-i18n="orderTitle">Place an Order Online</h2>
+          <p class="section-subtitle" data-i18n="orderSubtitle">
+            Fill in your details below and we will instantly prepare a ready-to-send WhatsApp message for you!
+          </p>
+        </div>
+
+        <div class="form-card-container">
+          <form id="orderForm" novalidate>
+            <div class="form-grid form-grid-2col">
+              <div class="form-group">
+                <label for="orderName" class="form-label" data-i18n="formName">Full Name *</label>
+                <input type="text" id="orderName" class="form-control" placeholder="Enter your name (e.g. Anjali Shah)" data-i18n-placeholder="formNamePlaceholder" required>
+                <span class="form-error-msg" id="errOrderName"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="orderPhone" class="form-label" data-i18n="formPhone">WhatsApp Phone Number *</label>
+                <input type="tel" id="orderPhone" class="form-control" placeholder="10-digit mobile number (e.g. 9820921522)" data-i18n-placeholder="formPhonePlaceholder" maxlength="10" required>
+                <span class="form-error-msg" id="errOrderPhone"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="orderItemType" class="form-label" data-i18n="formItemType">What would you like stitched? *</label>
+                <select id="orderItemType" class="form-control" required>
+                  <option value="" disabled selected data-i18n="formItemOptionSelect">-- Select Garment --</option>
+                  <option value="Blouse (Simple / Designer / Bridal)" data-i18n="formItemBlouse">Blouse (Simple / Designer / Bridal)</option>
+                  <option value="Dress / Anarkali / Suit" data-i18n="formItemDress">Dress / Anarkali / Suit</option>
+                  <option value="Kurti / Tunics" data-i18n="formItemKurti">Kurti / Tunics</option>
+                  <option value="Gown / Indo-Western" data-i18n="formItemGown">Gown / Indo-Western</option>
+                  <option value="Other / Multiple items" data-i18n="formItemOther">Other / Multiple items</option>
+                </select>
+                <span class="form-error-msg" id="errOrderItem"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="orderDate" class="form-label" data-i18n="formDate">When do you need it by? *</label>
+                <input type="date" id="orderDate" class="form-control" required>
+                <span class="form-error-msg" id="errOrderDate"></span>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="orderNotes" class="form-label" data-i18n="formNotes">Design Idea, Fabric Details & Neck Style</label>
+                <textarea id="orderNotes" class="form-control" rows="3" placeholder="Describe your fabric type, neck pattern (boat neck, sweetheart, deep back), sleeve length, or reference design..." data-i18n-placeholder="formNotesPlaceholder"></textarea>
+              </div>
+
+              <div class="form-group full-width">
+                <label class="checkbox-group">
+                  <input type="checkbox" id="orderPhotoRef" checked>
+                  <span class="form-label" style="font-weight: 500; font-size: 0.9rem;" data-i18n="formPhotoRefYes">
+                    I have a design reference photo (I will attach it in WhatsApp after clicking submit)
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.75rem;">
+              <button type="submit" class="btn btn-whatsapp-solid" style="width: 100%; font-size: 1.05rem;" data-i18n="btnSubmitOrder">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                Send Order on WhatsApp
+              </button>
+              <div class="form-footer-notice">
+                <span>🔒</span>
+                <span data-i18n="orderHelpNotice">Clicking opens WhatsApp with all your details pre-formatted. You can review and attach photos before hitting send.</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Book a Fitting -->
+    <section class="section" id="fitting" style="background-color: var(--bg-surface-elevated);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navFitting">Shop Appointment</span>
+          <h2 class="section-title" data-i18n="bookingTitle">Book a Fitting or Shop Visit</h2>
+          <p class="section-subtitle" data-i18n="bookingSubtitle">
+            Schedule a relaxed 1-on-1 consultation with our master tailor. We will keep your slot reserved.
+          </p>
+        </div>
+
+        <div class="form-card-container">
+          <form id="bookingForm" novalidate>
+            <div class="form-grid form-grid-2col">
+              <div class="form-group">
+                <label for="bookDate" class="form-label" data-i18n="bookDate">Select Date *</label>
+                <input type="date" id="bookDate" class="form-control" required>
+                <span class="form-help-text" data-i18n="bookDateHint">Mon to Sat only (Shop closed on Sundays)</span>
+                <span class="form-error-msg" id="errBookDate"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="bookTime" class="form-label" data-i18n="bookTime">Select Preferred Time Slot *</label>
+                <select id="bookTime" class="form-control" required>
+                  <option value="" disabled selected data-i18n="bookTimeOptionSelect">-- Choose Hourly Slot (10 AM to 7 PM) --</option>
+                  <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                  <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                  <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+                  <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
+                  <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+                  <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                  <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                  <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                  <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
+                </select>
+                <span class="form-error-msg" id="errBookTime"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="bookName" class="form-label" data-i18n="bookName">Your Name *</label>
+                <input type="text" id="bookName" class="form-control" placeholder="Enter your name" data-i18n-placeholder="bookNamePlaceholder" required>
+                <span class="form-error-msg" id="errBookName"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="bookPhone" class="form-label" data-i18n="bookPhone">Phone / WhatsApp *</label>
+                <input type="tel" id="bookPhone" class="form-control" placeholder="10-digit number" data-i18n-placeholder="bookPhonePlaceholder" maxlength="10" required>
+                <span class="form-error-msg" id="errBookPhone"></span>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="bookPurpose" class="form-label" data-i18n="bookPurpose">Purpose of Visit</label>
+                <select id="bookPurpose" class="form-control">
+                  <option value="New order & measurements" data-i18n="bookPurposeMeasurements">New order & measurements</option>
+                  <option value="Fitting / Trial of stitched outfit" data-i18n="bookPurposeTrial">Fitting / Trial of stitched outfit</option>
+                  <option value="Discuss bridal / heavy order & fabric" data-i18n="bookPurposeDiscussion">Discuss bridal / heavy order & fabric</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.75rem;">
+              <button type="submit" class="btn btn-teal" style="width: 100%; font-size: 1.05rem;" data-i18n="btnSubmitBooking">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Book Slot on WhatsApp
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Customer Reviews Slider -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navReviews">Testimonials</span>
+          <h2 class="section-title" data-i18n="reviewsTitle">Loved by Women Across Generations</h2>
+          <p class="section-subtitle" data-i18n="reviewsSubtitle">
+            From mothers to brides, our customers trust Ambica Ladies Tailor for lifetime memories.
+          </p>
+        </div>
+
+        <div class="reviews-slider-wrap">
+          <div class="reviews-track" id="reviewsTrack">
+            <!-- Dynamically populated from js/data.js -->
+          </div>
+
+          <div class="reviews-nav-controls">
+            <button type="button" class="btn-slider-arrow" id="reviewPrevBtn" aria-label="Previous review">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="reviews-dots" id="reviewsDots"></div>
+            <button type="button" class="btn-slider-arrow" id="reviewNextBtn" aria-label="Next review">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: FAQ Accordion -->
+    <section class="section" id="faq" style="background-color: var(--bg-surface-elevated);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navFaq">Help & Questions</span>
+          <h2 class="section-title" data-i18n="faqTitle">Frequently Asked Questions</h2>
+          <p class="section-subtitle" data-i18n="faqSubtitle">
+            Everything you need to know about our stitching process, timing, alterations and pricing.
+          </p>
+        </div>
+
+        <div class="faq-accordion-wrap" id="faqContainer">
+          <!-- Dynamically populated from js/data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 9: Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge" data-i18n="navContact">Location & Hours</span>
+          <h2 class="section-title" data-i18n="contactTitle">Visit or Contact Us</h2>
+          <p class="section-subtitle" data-i18n="contactSubtitle">
+            Located conveniently in the heart of the market. Drop by or give us a quick call!
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Card -->
+          <div class="contact-info-card">
+            <div class="contact-info-item">
+              <div class="contact-icon-bubble">📍</div>
+              <div class="contact-info-text">
+                <span class="contact-info-label" data-i18n="contactAddressLabel">Shop Address</span>
+                <span class="contact-info-val">Shop No. 4, Ambica Creation, Near Station Road, Central Market</span>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon-bubble">🕒</div>
+              <div class="contact-info-text">
+                <span class="contact-info-label" data-i18n="contactHoursLabel">Business Hours</span>
+                <span class="contact-info-val">Monday to Saturday: 10:00 AM – 8:00 PM<br><span style="color: #E53935; font-size: 0.88rem; font-weight: 500;">(Sunday Closed)</span></span>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon-bubble">📞</div>
+              <div class="contact-info-text">
+                <span class="contact-info-label" data-i18n="contactPhoneLabel">Phone & WhatsApp</span>
+                <span class="contact-info-val">+91 98209 21522</span>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon-bubble">📸</div>
+              <div class="contact-info-text">
+                <span class="contact-info-label" data-i18n="socialFollow">Instagram</span>
+                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" style="color: var(--color-magenta); font-weight: 600;" data-i18n="socialInstagramLink">
+                  @ambica_ladies_tailor
+                </a>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="contact-cta-buttons">
+              <a href="tel:+919820921522" class="btn btn-magenta" data-i18n="btnCallNow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call +91 98209 21522
+              </a>
+              <a href="https://wa.me/919820921522?text=Hello%20Ambica%20Tailor!%20I%20would%20like%20to%20enquire%20about%20stitching." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-solid" data-i18n="btnWhatsAppDirect">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Responsive Google Map Embed -->
+          <div class="contact-map-card">
+            <iframe
+              class="contact-map-iframe"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120638.16912423376!2d72.80931215424754!3d19.109153574100676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c87c00000001%3A0x6b4f7e53a3c!2sCentral%20Market!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              title="Ambica Ladies Tailor Location Map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3 class="footer-brand-title" data-i18n="shopName">Ambica Ladies Tailor</h3>
+          <p class="footer-brand-desc" data-i18n="footerDesc">
+            Handcrafted women's tailoring by a dedicated master craftsman. Creating one-of-a-kind blouses, dresses, kurtis and bridal wear stitched with passion and perfection.
+          </p>
+          <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+            <a href="tel:+919820921522" style="color: var(--color-gold); font-size: 0.9rem; font-weight: 600;">+91 98209 21522</a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title" data-i18n="footerQuickLinks">Quick Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#designs" class="footer-link" data-i18n="navDesigns">Designs</a></li>
+            <li><a href="#prices" class="footer-link" data-i18n="navPrices">Prices</a></li>
+            <li><a href="#guide" class="footer-link" data-i18n="navGuide">Measurement Guide</a></li>
+            <li><a href="#how-it-works" class="footer-link" data-i18n="navHowItWorks">How It Works</a></li>
+            <li><a href="#order" class="footer-link" data-i18n="navOrder">Order Online</a></li>
+            <li><a href="#fitting" class="footer-link" data-i18n="navFitting">Book a Fitting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-hours-col">
+          <h4 class="footer-col-title" data-i18n="footerHoursTitle">Visiting Hours</h4>
+          <p class="footer-hours-text">
+            <strong>Monday – Saturday:</strong><br>
+            10:00 AM – 8:00 PM<br><br>
+            <strong>Sunday:</strong><br>
+            <span style="color: #FF8A80;">Closed (Day for family & rest)</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footerCopyright">© 2026 Ambica Ladies Tailor. All rights reserved. Handcrafted with care.</p>
+        <p><a href="admin.html" class="footer-admin-link" data-i18n="footerAdminLink">Tailor Admin Portal 🔒</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/919820921522?text=Hello%20Ambica%20Tailor!%20I%20would%20like%20to%20enquire%20about%20stitching%20an%20outfit."
+     class="floating-whatsapp"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp with Ambica Tailor">
+    <svg class="whatsapp-icon-svg" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+    <span class="floating-whatsapp-text" data-i18n="floatingWhatsAppText">Chat on WhatsApp</span>
+  </a>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Design image preview">
+    <div class="lightbox-container">
+      <button type="button" class="lightbox-btn-close" id="lightboxCloseBtn" aria-label="Close design preview">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="lightbox-media">
+        <button type="button" class="lightbox-btn-nav lightbox-btn-prev" id="lightboxPrevBtn" aria-label="Previous design">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <img src="" alt="" class="lightbox-img" id="lightboxImg">
+
+        <button type="button" class="lightbox-btn-nav lightbox-btn-next" id="lightboxNextBtn" aria-label="Next design">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="lightbox-details">
+        <div class="lightbox-meta">
+          <span class="lightbox-badge" id="lightboxCategory">Blouses</span>
+          <span class="lightbox-price" id="lightboxPrice">₹1,200+</span>
+        </div>
+        <h3 class="lightbox-title" id="lightboxTitle">Design Title</h3>
+        <p class="lightbox-desc" id="lightboxDesc">Description of this creation...</p>
+
+        <div class="lightbox-actions">
+          <button type="button" class="btn btn-magenta" id="lightboxOrderBtn" data-i18n="btnOrderThis">
+            Order This Design
+          </button>
+          <button type="button" class="btn btn-whatsapp-solid" id="lightboxEnquireBtn" data-i18n="btnEnquire">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+            Enquire on WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast-msg" id="toastMsg" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

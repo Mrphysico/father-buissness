@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Ambica Ladies Tailor</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Admin Specific Styles */
+    .admin-body {
+      background-color: var(--bg-subtle);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-nav {
+      background-color: var(--bg-surface);
+      border-bottom: 2px solid var(--color-magenta);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .admin-badge {
+      background: var(--color-magenta);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+
+    /* Auth Gate */
+    .auth-gate-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .auth-card {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .auth-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Dashboard */
+    .admin-dashboard {
+      display: none;
+      padding: 2rem 0 4rem 0;
+      flex: 1;
+    }
+
+    .admin-dashboard.unlocked {
+      display: block;
+    }
+
+    .admin-tabs-bar {
+      display: flex;
+      gap: 0.75rem;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .admin-tab-btn {
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      border-bottom: 3px solid transparent;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .admin-tab-btn.active {
+      color: var(--color-magenta);
+      border-bottom-color: var(--color-magenta);
+      background-color: var(--bg-surface);
+    }
+
+    .admin-panel {
+      display: none;
+    }
+
+    .admin-panel.active {
+      display: block;
+    }
+
+    .admin-card {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+    }
+
+    .admin-card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .admin-table-wrap {
+      overflow-x: auto;
+    }
+
+    .admin-thumb {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-action-sm {
+      padding: 0.4rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .btn-edit {
+      background-color: var(--color-violet-light);
+      color: var(--color-violet);
+      border: 1px solid rgba(91, 42, 134, 0.3);
+    }
+
+    .btn-edit:hover {
+      background-color: var(--color-violet);
+      color: #FFFFFF;
+    }
+
+    .btn-delete {
+      background-color: #FFEBEE;
+      color: #D32F2F;
+      border: 1px solid rgba(211, 47, 47, 0.3);
+    }
+
+    .btn-delete:hover {
+      background-color: #D32F2F;
+      color: #FFFFFF;
+    }
+
+    /* Modal Form */
+    .admin-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .admin-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .admin-modal-box {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 650px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .image-preview-box {
+      margin-top: 0.75rem;
+      width: 120px;
+      height: 120px;
+      border-radius: var(--radius-md);
+      border: 2px dashed var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: var(--bg-subtle);
+    }
+
+    .image-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- Admin Header Bar -->
+  <header class="admin-nav">
+    <div class="admin-brand">
+      <img src="images/favicon.svg" alt="Logo" style="width: 36px; height: 36px;">
+      <div>
+        <strong style="font-size: 1.1rem; color: var(--color-magenta);">Ambica Ladies Tailor</strong>
+        <span class="admin-badge">Admin Manager</span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <a href="index.html" class="btn btn-outline-white" style="color: var(--text-primary); border-color: var(--border-color); font-size: 0.88rem; padding: 0.5rem 1rem;">
+        ← Back to Live Site
+      </a>
+      <button type="button" class="btn-icon-toggle" id="adminThemeToggle" aria-label="Toggle theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button type="button" id="adminLogoutBtn" class="btn btn-magenta" style="display: none; padding: 0.5rem 1rem; font-size: 0.88rem;">
+        Lock &amp; Exit
+      </button>
+    </div>
+  </header>
+
+  <!-- Login Gate Modal -->
+  <div class="auth-gate-wrap" id="authGate">
+    <div class="auth-card">
+      <div class="auth-icon">🔒</div>
+      <h1 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 0.5rem;">Tailor Admin Portal</h1>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+        Enter the secret password to update designs, manage starting prices, and export backups.
+      </p>
+
+      <form id="authForm">
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <input type="password" id="adminPasswordInput" class="form-control" placeholder="Enter Admin Password (e.g. ambica123)" required autofocus style="text-align: center; font-size: 1.1rem;">
+          <span class="form-error-msg" id="authErrorMsg" style="margin-top: 0.5rem;">Incorrect password. Please try again.</span>
+        </div>
+        <button type="submit" class="btn btn-primary-gold" style="width: 100%;">
+          Unlock Dashboard 🔓
+        </button>
+      </form>
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 1.25rem;">
+        Default demo password: <code>ambica123</code> (customizable in <code>js/data.js</code>)
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Admin Dashboard -->
+  <div class="admin-dashboard" id="adminDashboard">
+    <div class="container">
+
+      <!-- Navigation Tabs -->
+      <div class="admin-tabs-bar" role="tablist">
+        <button type="button" class="admin-tab-btn active" data-tab="tabDesigns">
+          👗 Designs Catalog (<span id="designCountBadge">0</span>)
+        </button>
+        <button type="button" class="admin-tab-btn" data-tab="tabPrices">
+          💰 Price List Settings
+        </button>
+        <button type="button" class="admin-tab-btn" data-tab="tabBackup">
+          💾 Backup &amp; Sync (Export / Import)
+        </button>
+      </div>
+
+      <!-- Tab 1: Designs Catalog -->
+      <div class="admin-panel active" id="tabDesigns">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h2 style="font-family: var(--font-heading); font-size: 1.5rem;">Manage Creations</h2>
+              <p style="font-size: 0.88rem; color: var(--text-secondary);">
+                Add new designs, edit descriptions, or update photos. Saved changes immediately update the live customer website.
+              </p>
+            </div>
+            <button type="button" class="btn btn-magenta" id="btnOpenAddDesign">
+              + Add New Design
+            </button>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="prices-table">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>Title (English &amp; Gujarati)</th>
+                  <th>Category</th>
+                  <th>Price Tag</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminDesignsTableBody">
+                <!-- Populated via admin JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Prices Management -->
+      <div class="admin-panel" id="tabPrices">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h2 style="font-family: var(--font-heading); font-size: 1.5rem;">Edit Starting Prices</h2>
+              <p style="font-size: 0.88rem; color: var(--text-secondary);">
+                Adjust the base starting rates for blouses, dresses, kurtis, and gowns.
+              </p>
+            </div>
+            <button type="button" class="btn btn-teal" id="btnSavePrices">
+              💾 Save All Prices
+            </button>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="prices-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Garment Name</th>
+                  <th style="width: 20%;">Starting Price (₹)</th>
+                  <th style="width: 55%;">Included Highlights &amp; Specifications</th>
+                </tr>
+              </thead>
+              <tbody id="adminPricesTableBody">
+                <!-- Populated via admin JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Backup & Sync -->
+      <div class="admin-panel" id="tabBackup">
+        <div class="admin-card">
+          <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem;">Data Backup &amp; Device Transfer</h2>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.75rem;">
+            Because this website runs directly in your browser without requiring expensive backend servers, your edits are safely stored in your browser's LocalStorage. You can export a JSON backup file to move data between your phone, tablet, or laptop.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            <!-- Export Card -->
+            <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; background-color: var(--bg-surface-elevated);">
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">📥 Export Backup</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Download all your custom designs and prices into a lightweight <code>.json</code> file.
+              </p>
+              <button type="button" class="btn btn-teal" id="btnExportJson">
+                Export to JSON File
+              </button>
+            </div>
+
+            <!-- Import Card -->
+            <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; background-color: var(--bg-surface-elevated);">
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">📤 Import Backup</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Restore or load designs from a previously downloaded <code>.json</code> backup file.
+              </p>
+              <input type="file" id="importFileInput" accept=".json" style="display: none;">
+              <button type="button" class="btn btn-primary-gold" id="btnTriggerImport">
+                Choose JSON File to Import
+              </button>
+            </div>
+
+            <!-- Reset Card -->
+            <div style="border: 1px solid rgba(229, 57, 53, 0.3); border-radius: var(--radius-md); padding: 1.5rem; background-color: var(--bg-surface-elevated);">
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #D32F2F;">⚠️ Factory Reset</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Reset all designs and prices back to original starter samples.
+              </p>
+              <button type="button" class="btn btn-delete" id="btnResetDefaults">
+                Reset to Original Defaults
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Add/Edit Design Modal -->
+  <div class="admin-modal-overlay" id="designModal">
+    <div class="admin-modal-box">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+        <h3 id="modalHeading" style="font-family: var(--font-heading); font-size: 1.4rem;">Add New Design</h3>
+        <button type="button" id="btnCloseModal" class="btn-card-view" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="designForm">
+        <input type="hidden" id="editDesignId" value="">
+
+        <div class="form-grid form-grid-2col" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label for="designTitleEn" class="form-label">Design Title (English) *</label>
+            <input type="text" id="designTitleEn" class="form-control" placeholder="e.g. Royal Silk Blouse" required>
+          </div>
+
+          <div class="form-group">
+            <label for="designTitleGu" class="form-label">Design Title (Gujarati)</label>
+            <input type="text" id="designTitleGu" class="form-control" placeholder="દા.ત. રોયલ સિલ્ક બ્લાઉઝ">
+          </div>
+
+          <div class="form-group">
+            <label for="designCategory" class="form-label">Category *</label>
+            <select id="designCategory" class="form-control" required>
+              <option value="blouses">Blouse</option>
+              <option value="dresses">Dress / Anarkali</option>
+              <option value="kurtis">Kurti</option>
+              <option value="gowns">Gown</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="designPriceTag" class="form-label">Price Estimate Badge</label>
+            <input type="text" id="designPriceTag" class="form-control" placeholder="e.g. ₹1,200+">
+          </div>
+
+          <div class="form-group full-width">
+            <label for="designDescEn" class="form-label">Description (English) *</label>
+            <textarea id="designDescEn" class="form-control" rows="2" placeholder="Details about fabric, neck pattern, embroidery..." required></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="designDescGu" class="form-label">Description (Gujarati)</label>
+            <textarea id="designDescGu" class="form-control" rows="2" placeholder="કાપડ અને કારીગરીની વિગત..."></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label">Photo Upload (Auto Compressed in Browser)</label>
+            <input type="file" id="designPhotoFile" accept="image/*" class="form-control">
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem;">
+              Photos are automatically resized and compressed to Web-friendly format so they load fast and save smoothly.
+            </p>
+            <div class="image-preview-box">
+              <img id="designPreviewImg" src="images/placeholders/blouse-paithani.svg" alt="Preview">
+            </div>
+            <input type="hidden" id="designImageSrc" value="images/placeholders/blouse-paithani.svg">
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline-white" style="color: var(--text-primary); border-color: var(--border-color);" id="btnCancelModal">Cancel</button>
+          <button type="submit" class="btn btn-magenta" id="btnSaveDesign">Save Design</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="adminToast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let currentDesigns = getStoredDesigns();
+      let currentPrices = getStoredPrices();
+
+      const authGate = document.getElementById("authGate");
+      const authForm = document.getElementById("authForm");
+      const adminPasswordInput = document.getElementById("adminPasswordInput");
+      const authErrorMsg = document.getElementById("authErrorMsg");
+      const adminDashboard = document.getElementById("adminDashboard");
+      const adminLogoutBtn = document.getElementById("adminLogoutBtn");
+
+      const adminDesignsTableBody = document.getElementById("adminDesignsTableBody");
+      const adminPricesTableBody = document.getElementById("adminPricesTableBody");
+      const designCountBadge = document.getElementById("designCountBadge");
+
+      const designModal = document.getElementById("designModal");
+      const btnOpenAddDesign = document.getElementById("btnOpenAddDesign");
+      const btnCloseModal = document.getElementById("btnCloseModal");
+      const btnCancelModal = document.getElementById("btnCancelModal");
+      const designForm = document.getElementById("designForm");
+      const modalHeading = document.getElementById("modalHeading");
+
+      const editDesignId = document.getElementById("editDesignId");
+      const designTitleEn = document.getElementById("designTitleEn");
+      const designTitleGu = document.getElementById("designTitleGu");
+      const designCategory = document.getElementById("designCategory");
+      const designPriceTag = document.getElementById("designPriceTag");
+      const designDescEn = document.getElementById("designDescEn");
+      const designDescGu = document.getElementById("designDescGu");
+      const designPhotoFile = document.getElementById("designPhotoFile");
+      const designPreviewImg = document.getElementById("designPreviewImg");
+      const designImageSrc = document.getElementById("designImageSrc");
+
+      const btnSavePrices = document.getElementById("btnSavePrices");
+      const btnExportJson = document.getElementById("btnExportJson");
+      const btnTriggerImport = document.getElementById("btnTriggerImport");
+      const importFileInput = document.getElementById("importFileInput");
+      const btnResetDefaults = document.getElementById("btnResetDefaults");
+      const adminToast = document.getElementById("adminToast");
+
+      const adminThemeToggle = document.getElementById("adminThemeToggle");
+
+      // Theme
+      const savedTheme = getSavedTheme();
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      adminThemeToggle.addEventListener("click", () => {
+        const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        saveTheme(next);
+      });
+
+      function showToast(msg) {
+        adminToast.textContent = msg;
+        adminToast.classList.add("show");
+        setTimeout(() => adminToast.classList.remove("show"), 3000);
+      }
+
+      // Password Authentication
+      authForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const pwd = adminPasswordInput.value.trim();
+        if (pwd === CONFIG.ADMIN_PASSWORD) {
+          authGate.style.display = "none";
+          adminDashboard.classList.add("unlocked");
+          adminLogoutBtn.style.display = "inline-flex";
+          authErrorMsg.classList.remove("visible");
+          renderAdminDesigns();
+          renderAdminPrices();
+          showToast("Welcome to Tailor Admin Panel!");
+        } else {
+          authErrorMsg.classList.add("visible");
+        }
+      });
+
+      adminLogoutBtn.addEventListener("click", () => {
+        adminDashboard.classList.remove("unlocked");
+        authGate.style.display = "flex";
+        adminLogoutBtn.style.display = "none";
+        adminPasswordInput.value = "";
+      });
+
+      // Tabs Switching
+      document.querySelectorAll(".admin-tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".admin-tab-btn").forEach(b => b.classList.remove("active"));
+          document.querySelectorAll(".admin-panel").forEach(p => p.classList.remove("active"));
+
+          btn.classList.add("active");
+          const target = document.getElementById(btn.getAttribute("data-tab"));
+          if (target) target.classList.add("active");
+        });
+      });
+
+      // Render Admin Designs List
+      function renderAdminDesigns() {
+        designCountBadge.textContent = currentDesigns.length;
+        if (currentDesigns.length === 0) {
+          adminDesignsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 2rem;">No designs in catalog. Click "+ Add New Design" to create one.</td></tr>`;
+          return;
+        }
+
+        adminDesignsTableBody.innerHTML = currentDesigns.map((d, index) => `
+          <tr>
+            <td>
+              <img src="${d.image}" alt="${d.title}" class="admin-thumb">
+            </td>
+            <td>
+              <strong>${d.title}</strong><br>
+              <small style="color: var(--text-muted);">${d.titleGu || "—"}</small>
+            </td>
+            <td>
+              <span class="design-category-tag" style="position: static; display: inline-block;">${d.category}</span>
+            </td>
+            <td>
+              <span style="font-weight: 700; color: var(--color-teal);">${d.priceEstimate || "Bespoke"}</span>
+            </td>
+            <td>
+              <div style="display: flex; gap: 0.5rem;">
+                <button type="button" class="btn-action-sm btn-edit" data-edit-index="${index}">
+                  ✏️ Edit
+                </button>
+                <button type="button" class="btn-action-sm btn-delete" data-delete-index="${index}">
+                  🗑️ Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        `).join("");
+
+        // Attach edit/delete handlers
+        adminDesignsTableBody.querySelectorAll("[data-edit-index]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const idx = parseInt(btn.getAttribute("data-edit-index"), 10);
+            openEditDesignModal(idx);
+          });
+        });
+
+        adminDesignsTableBody.querySelectorAll("[data-delete-index]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const idx = parseInt(btn.getAttribute("data-delete-index"), 10);
+            if (confirm(`Are you sure you want to delete "${currentDesigns[idx].title}"?`)) {
+              currentDesigns.splice(idx, 1);
+              saveStoredDesigns(currentDesigns);
+              renderAdminDesigns();
+              showToast("Design deleted.");
+            }
+          });
+        });
+      }
+
+      // Render Admin Prices List
+      function renderAdminPrices() {
+        adminPricesTableBody.innerHTML = currentPrices.map((p, idx) => `
+          <tr>
+            <td>
+              <strong>${p.name}</strong><br>
+              <small style="color: var(--text-muted);">${p.nameGu || ""}</small>
+            </td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 0.35rem;">
+                <span>₹</span>
+                <input type="number" step="50" class="form-control" style="width: 110px; padding: 0.4rem 0.6rem;" data-price-idx="${idx}" value="${p.price}">
+              </div>
+            </td>
+            <td>
+              <input type="text" class="form-control" style="padding: 0.4rem 0.6rem;" data-details-idx="${idx}" value="${p.details || ""}">
+            </td>
+          </tr>
+        `).join("");
+      }
+
+      // Save Prices
+      btnSavePrices.addEventListener("click", () => {
+        document.querySelectorAll("[data-price-idx]").forEach(input => {
+          const idx = parseInt(input.getAttribute("data-price-idx"), 10);
+          const val = parseInt(input.value, 10);
+          if (!isNaN(val)) currentPrices[idx].price = val;
+        });
+
+        document.querySelectorAll("[data-details-idx]").forEach(input => {
+          const idx = parseInt(input.getAttribute("data-details-idx"), 10);
+          currentPrices[idx].details = input.value.trim();
+        });
+
+        saveStoredPrices(currentPrices);
+        showToast("Prices saved successfully!");
+      });
+
+      // Image Compression via Canvas
+      designPhotoFile.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = new Image();
+          img.onload = () => {
+            // Compress with Canvas to max 720px width/height
+            const canvas = document.createElement("canvas");
+            let width = img.width;
+            let height = img.height;
+            const maxDim = 720;
+
+            if (width > height) {
+              if (width > maxDim) {
+                height = Math.round((height * maxDim) / width);
+                width = maxDim;
+              }
+            } else {
+              if (height > maxDim) {
+                width = Math.round((width * maxDim) / height);
+                height = maxDim;
+              }
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+
+            // Compress to JPEG 0.78 quality
+            const compressedBase64 = canvas.toDataURL("image/jpeg", 0.78);
+            designPreviewImg.src = compressedBase64;
+            designImageSrc.value = compressedBase64;
+            showToast("Photo processed & compressed!");
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // Modal Logic
+      function openAddDesignModal() {
+        modalHeading.textContent = "Add New Design";
+        editDesignId.value = "";
+        designForm.reset();
+        designPreviewImg.src = "images/placeholders/blouse-paithani.svg";
+        designImageSrc.value = "images/placeholders/blouse-paithani.svg";
+        designModal.classList.add("open");
+      }
+
+      function openEditDesignModal(idx) {
+        const item = currentDesigns[idx];
+        if (!item) return;
+
+        modalHeading.textContent = "Edit Design";
+        editDesignId.value = item.id;
+        designTitleEn.value = item.title;
+        designTitleGu.value = item.titleGu || "";
+        designCategory.value = item.category;
+        designPriceTag.value = item.priceEstimate || "";
+        designDescEn.value = item.description;
+        designDescGu.value = item.descriptionGu || "";
+        designPreviewImg.src = item.image;
+        designImageSrc.value = item.image;
+        designModal.classList.add("open");
+      }
+
+      function closeModal() {
+        designModal.classList.remove("open");
+      }
+
+      btnOpenAddDesign.addEventListener("click", openAddDesignModal);
+      btnCloseModal.addEventListener("click", closeModal);
+      btnCancelModal.addEventListener("click", closeModal);
+
+      // Handle Form Submit
+      designForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const id = editDesignId.value || `des-${Date.now()}`;
+        const newDesign = {
+          id: id,
+          title: designTitleEn.value.trim(),
+          titleGu: designTitleGu.value.trim() || designTitleEn.value.trim(),
+          category: designCategory.value,
+          priceEstimate: designPriceTag.value.trim() || "Bespoke",
+          image: designImageSrc.value,
+          description: designDescEn.value.trim(),
+          descriptionGu: designDescGu.value.trim() || designDescEn.value.trim()
+        };
+
+        if (editDesignId.value) {
+          // Update existing
+          const idx = currentDesigns.findIndex(d => d.id === id);
+          if (idx !== -1) currentDesigns[idx] = newDesign;
+        } else {
+          // Add new to top
+          currentDesigns.unshift(newDesign);
+        }
+
+        saveStoredDesigns(currentDesigns);
+        renderAdminDesigns();
+        closeModal();
+        showToast("Design saved! Live site updated.");
+      });
+
+      // Export JSON
+      btnExportJson.addEventListener("click", () => {
+        const exportData = {
+          version: "1.0",
+          exportDate: new Date().toISOString(),
+          designs: currentDesigns,
+          prices: currentPrices
+        };
+
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `ambica_tailor_backup_${new Date().toISOString().split("T")[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("Backup file downloaded.");
+      });
+
+      // Import JSON
+      btnTriggerImport.addEventListener("click", () => importFileInput.click());
+      importFileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const data = JSON.parse(event.target.result);
+            if (data.designs && Array.isArray(data.designs)) {
+              currentDesigns = data.designs;
+              saveStoredDesigns(currentDesigns);
+            }
+            if (data.prices && Array.isArray(data.prices)) {
+              currentPrices = data.prices;
+              saveStoredPrices(currentPrices);
+            }
+            renderAdminDesigns();
+            renderAdminPrices();
+            showToast("Backup successfully restored!");
+          } catch (err) {
+            alert("Error parsing backup JSON file: " + err.message);
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      // Reset to defaults
+      btnResetDefaults.addEventListener("click", () => {
+        if (confirm("Reset all designs and prices to default initial catalog? This will overwrite local changes.")) {
+          localStorage.removeItem(CONFIG.STORAGE_KEY_DESIGNS);
+          localStorage.removeItem(CONFIG.STORAGE_KEY_PRICES);
+          currentDesigns = getStoredDesigns();
+          currentPrices = getStoredPrices();
+          renderAdminDesigns();
+          renderAdminPrices();
+          showToast("Catalog reset to defaults.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
